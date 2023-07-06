@@ -82,6 +82,10 @@ sixaxis_rename() {
     fi
 }
 
+echo "bluetooth_mac=$BLUETOOTH_MAC"
+bluetoothctl trust ${SIXAXIS_MAC^^}
+bluetoothctl pair ${SIXAXIS_MAC^^}
+
 sixaxis_rename
 sixaxis_calibrate
 if [[ "$SIXAXIS_TIMEOUT" == "0" ]] || [[ "$BLUETOOTH_MAC" =~ "usb" ]]; then
